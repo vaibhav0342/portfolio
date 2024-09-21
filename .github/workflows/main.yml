@@ -4,9 +4,6 @@ on:
   push:
     branches: [main]  #It will trigger on push events to the main branch.
  
-  workflow_dispatch:   #This allows you to manually trigger
-  schedule:
-    - cron: "1 8 * * *"
   
 
 permissions:
@@ -14,22 +11,15 @@ permissions:
 
 
 jobs:
-  build_and_deploy:
-    strategy:
-        matrix:
-            verion: ["14","16","18","20"]
-            os: ["ubuntu-latest"]  
-    runs-on: ${{matrix.os}}
-
+  build_and_deploy:          
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
-        with:
-          node-version: ${{matrix.version}}
-
+       
       - name: Install dependencies
         run: npm install
 
