@@ -23,6 +23,8 @@ jobs:
         sudo apt-get install apache2 -y
 
     # Step 3: Deploy your website files to the Apache directory
+    - name: List repository files
+      run: ls -la 
     - name: Deploy website
       run: |
         sudo cp -r ./portpolio/* /var/www/html/
