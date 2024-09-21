@@ -27,7 +27,7 @@ jobs:
       run: ls -la 
     - name: Deploy website
       run: |
-        sudo cp -r ./portpolio/* /var/www/html/
+        sudo cp -r ./css ./fonts ./images ./index.html ./js ./lib /var/www/html/
 
     # Step 4: Start Apache server and verify it's running
     - name: Start Apache server
